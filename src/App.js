@@ -3,8 +3,9 @@ import { Form, Card, Image, Icon } from 'semantic-ui-react';
 import './App.css';
 import UserCard from '../src/Components/UserCard'
 import BarChart from '../src/Components/BarChart'
+import PieChart from '../src/Components/PieChart'
 
-export {BarChart};
+export {BarChart, PieChart};
 
 
 
@@ -39,6 +40,7 @@ const handleSubmit = () => {
           </div>
       <UserCard data = {userName} />    
       <BarChart></BarChart>
+      <PieChart></PieChart>
       
        
  
