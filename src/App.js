@@ -2,6 +2,9 @@ import React, {UseState, useEffect, useState} from 'react';
 import { Form, Card, Image, Icon } from 'semantic-ui-react';
 import './App.css';
 import UserCard from '../src/Components/UserCard'
+import BarChart from '../src/Components/BarChart'
+
+export {BarChart};
 
 
 
@@ -19,7 +22,7 @@ function App() {
 }
 
 const handleSubmit = () => {
-  setUserName(userInput)
+  setUserName(this.state.userInput)
 }
   
 
@@ -29,12 +32,13 @@ const handleSubmit = () => {
       <div className= "search">
             <Form onSubmit = {handleSubmit}>
               <Form.Group>
-                <Form.Input placeholder='Search Github User' name='Github User' onChange = {handleSearch} /> 
+                <Form.Input placeholder='Search Github User' name='Search Github User' onChange = {handleSearch} /> 
                 <Form.Button content='Search' />
               </Form.Group>
             </Form>
           </div>
       <UserCard data = {userName} />    
+      <BarChart></BarChart>
       
        
  
@@ -46,4 +50,3 @@ const handleSubmit = () => {
 }
 
 export default App;
-

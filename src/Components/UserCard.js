@@ -1,6 +1,9 @@
 import { Form, Card, Image, Icon } from 'semantic-ui-react';
 import React, { useEffect, useState} from "react";
 import "../App.css";
+import { BarChart } from '../App';
+
+export { BarChart };
 
 function UserCard ({ data }){
 
@@ -14,6 +17,7 @@ function UserCard ({ data }){
  
   const [error, setError] = useState(null);
   const [user, setUser] = useState('guptasanil');
+  
 
 
 
@@ -34,6 +38,7 @@ function UserCard ({ data }){
       }
     }
     )
+    
   }
 
   const setData = ({ name, login, followers, following, public_repos, avatar_url}) => {
@@ -43,6 +48,9 @@ function UserCard ({ data }){
       setFollowing(following)
       setRepos(public_repos)
       setAvatar(avatar_url)
+      
+      
+      
 
 
   }
@@ -73,6 +81,8 @@ function UserCard ({ data }){
       </a>
     </Card.Content>
   </Card>
+  
+  
 
         )
 
