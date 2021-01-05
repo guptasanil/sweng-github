@@ -12,7 +12,7 @@ async function getLangs(username, repoName) {
         
         langArr.push(lang);
     });
-    console.log(langArr);
+    //console.log(langArr);
     
     return langArr;
 }
