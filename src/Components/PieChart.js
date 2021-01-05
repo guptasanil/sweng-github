@@ -38,7 +38,7 @@ function ChartComponent({ user, repo }) {
     setDispRepo(repo);
     setLanguages(langArr);
     setChartConfigs({
-      type: "pie3d", // The chart type
+      type: "pie2d", // The chart type
       renderAt: 'chart-container',
       width: "700", // Width of the chart
       height: "400", // Height of the chart

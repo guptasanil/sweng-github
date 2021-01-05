@@ -5,6 +5,7 @@ import UserCard from '../src/Components/UserCard'
 import BarChart from './Components/BarChart'
 import PieChart from '../src/Components/PieChart'
 import getRepos from '../src/Api/GetRepos'
+import styled from "styled-components";
 
 export {BarChart, PieChart};
 
@@ -13,6 +14,22 @@ function App() {
   const [userName, setUserName] = useState('guptasanil');
   const [repos, setRepos] = useState([])
   const [dispRepo, setDispRepo] = useState('College');
+
+  const Button = styled.button`
+  background-color: white;
+  color: grey;
+  font-size: 10px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin: 5px 0px;
+  cursor: pointer;
+  margin: spacing,
+  border: 2px solid palevioletred;
+  border-radius: 5px;
+  
+  
+  
+`;
 
   useEffect(() => {
     handleSubmit();
@@ -31,7 +48,7 @@ function App() {
   return(
     <div>
       <div className= 'navbar'>Github Search</div> 
-      <div className= "search">
+      <div className= 'search'>
             <Form onSubmit = {handleSubmit}>
               <Form.Group>
                 <Form.Input placeholder='Search Github User' name='Search Github User' onChange = {handleSearch} /> 
@@ -43,19 +60,20 @@ function App() {
       <div onClick={() => {}}>
           {repos.map((x) => (
               <div key={x.name}>
-                  <button
+                  <Button className = "button"
+                      
                       className="list-button"
                       onClick={() => {
                         setDispRepo(x.name);
                       }}
                   >
                       {x.name}
-                  </button>
+                  </Button>
               </div>
           ))}
       </div>
       <PieChart user={userName} repo={dispRepo}/>
-      <BarChart />
+
     </div>
   );
 }

@@ -1,70 +1,63 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
-import Column2D from "fusioncharts/fusioncharts.charts";
+import Graph from "fusioncharts/fusioncharts.charts";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
-const chartData = [
-  {
-    label: "Venezuela",
-    value: "290"
-  },
-  {
-    label: "Saudi",
-    value: "260"
-  },
-  {
-    label: "Canada",
-    value: "180"
-  },
-  {
-    label: "Iran",
-    value: "140"
-  },
-  {
-    label: "Russia",
-    value: "115"
-  },
-  {
-    label: "UAE",
-    value: "100"
-  },
-  {
-    label: "US",
-    value: "30"
-  },
-  {
-    label: "China",
-    value: "30"
-  }
-];
+import { Component } from "react";
 
-// STEP 3 - Creating the JSON object to store the chart configurations
-const chartConfigs = {
-  type: "column3d", // The chart type
-  width: "700", // Width of the chart
-  height: "400", // Height of the chart
-  dataFormat: "json", // Data type
-  dataSource: {
-    // Chart Configuration
-    chart: {
-      caption: "Commits per Repo",
+// Adding the chart and theme as dependency to the core fusioncharts
+ReactFC.fcRoot(FusionCharts, Graph, FusionTheme);
 
-     // subCaption: "In MMbbl = One Million barrels",
-      xAxisName: "Country",
-      yAxisName: "Reserves (MMbbl)",
-      numberSuffix: "K",
-      theme: "fusion"
-    },
-    data: chartData
-  }
-};
+function ChartComponent({ user, repo }) {
+  const [languages, setLanguages] = useState([]);
+  const [dispRepo, setDispRepo] = useState('');
+  const [chartConfigs, setChartConfigs] = useState({});
 
-// STEP 4 - Creating the DOM element to pass the react-fusioncharts component
-class App extends React.Component {
-  render() {
-    return (<ReactFC {...chartConfigs} />);
+  useEffect(() => {
+    getData();
+  }, [ user, repo ]);
+
+  const getData = async () => {
+    const retlanguages = await fetch(
+      `https://api.github.com/repos/${user}/${repo}/languages`
+    );
+    const languagesJSON = await retlanguages.json();
+    var langArr = [];
+    Object.keys(languagesJSON).forEach(function (key) {
+        var lang = {
+            label: key,
+            value: languagesJSON[key],
+        };
+        langArr.push(lang);
+    });
+
+    var prevDs = Object.assign({}, chartConfigs.dataSource);
+    prevDs.data = langArr;
+    chartConfigs.dataSource = prevDs;
+    console.log(chartConfigs.dataSource);
+    //setDispRepo(repo);
+    //setLanguages(langArr);
+    setChartConfigs({
+      type: "column2d", // The chart type
+      renderAt: 'chart-container',
+      width: "700", // Width of the chart
+      height: "400", // Height of the chart
+      dataFormat: "json", // Data type
+      dataSource: {
+        chart: {
+          caption: `Languages in ${repo} repo`,
+          theme: "fusion"
+        },
+        data: langArr,
+      }
+    });
   }
+
+  return (
+    <div>
+      <ReactFC {...chartConfigs} />
+    </div>
+  )
 }
 
-export default App;
+export default ChartComponent;
