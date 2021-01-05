@@ -20,68 +20,93 @@ ReactFC.fcRoot(FusionCharts, Graph, FusionTheme);
 // STEP 2 - Chart Data
 const chartData = [
   {
-    label: "Venezuela",
-    value: "290"
+    label: "Java",
+    value: "21"
   },
   {
-    label: "Saudi",
-    value: "260"
+    label: "JavaScript",
+    value: "11"
   },
   {
-    label: "Canada",
-    value: "180"
+    label: "HTML",
+    value: "8"
   },
   {
-    label: "Iran",
-    value: "140"
+    label: "Python",
+    value: "5"
   },
   {
-    label: "Russia",
-    value: "115"
+    label: "Dart",
+    value: "2"
   },
-  {
-    label: "UAE",
-    value: "100"
-  },
-  {
-    label: "US",
-    value: "30"
-  },
-  {
-    label: "China",
-    value: "30"
-  }
 ];
 
 // STEP 3 - Creating the JSON object to store the chart configurations
-const chartConfigs = {
-  type: "pie2d", // The chart type
-  width: "700", // Width of the chart
-  height: "400", // Height of the chart
-  dataFormat: "json", // Data type
-  dataSource: {
-    // Chart Configuration
-    chart: {
-      //Set the chart caption
-      caption: "Countries With Most Oil Reserves [2017-18]",
-      //Set the chart subcaption
-      subCaption: "In MMbbl = One Million barrels",
-      //Set the x-axis name
-      xAxisName: "Country",
-      //Set the y-axis name
-      yAxisName: "Reserves (MMbbl)",
-      numberSuffix: "K",
-      //Set the theme for your chart
-      theme: "fusion"
-    },
-    // Chart Data
-    data: chartData
-  }
-};
+// const chartConfigs = {
+//   type: "pie2d", // The chart type
+//   width: "700", // Width of the chart
+//   height: "400", // Height of the chart
+//   dataFormat: "json", // Data type
+//   dataSource: {
+//     chart: {
+//       caption: "Repo Languages",
+//       theme: "fusion"
+//     },
+//     // Chart Data
+//     data: chartData
+//   }
+// };
 
-const ChartComponent = () => {
+const ChartComponent = (passedData) => {
+
+  
+  const chartConfigs = {
+    
+  
+
+    type: "pie2d", // The chart type
+    renderAt: 'chart-container',
+    width: "700", // Width of the chart
+    height: "400", // Height of the chart
+    dataFormat: "json", // Data type
+    dataSource: {
+      chart: {
+        caption: "Repo Languages",
+        theme: "fusion"
+      },
+      // Chart Data
+      data: passedData
+    }
+  };
+    console.log(passedData)
     return (<ReactFC {...chartConfigs} />);
 }
+
+// var dataStore = new FusionCharts.DataStore().createDataTable(data, schema);
+// // time series chart instance
+// var realtimeChart = new FusionCharts({
+//   type: 'timeseries',
+//   renderAt: 'chart-container',
+//   width: '100%',
+//   height: '600',
+//   dataSource: {
+//     data: dataStore,
+//     yAxis: {
+//       plottype: 'area'
+//     },
+//     series: 'City'
+//   }
+// }).render();
+
+// document.getElementById('update-data').addEventListener('click', function() {
+//    var cityArr = ["New York", "London"];
+//    let index = data[randBetween(0, data.length)][0];
+//    let value = randBetween(20, 60);
+//    let city = cityArr[Math.floor(Math.random()*cityArr.length)];
+
+//    realtimeChart.feedData([
+//        [index, value, city]
+//        ]);
 
 
 
