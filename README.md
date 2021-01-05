@@ -9,12 +9,12 @@ React, Node, Bootstrap, FusionCharts
 ## To Run the App:
 
 Install the required dependencies by running
-
-### `npm start`
-and
 ### `npm install fusioncharts react-fusioncharts --save`
+to install the react-fusioncharts and fusioncharts modules 
 
-Runs the app in the development mode.\
+and
+### `npm start`
+to run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
