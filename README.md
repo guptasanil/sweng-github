@@ -1,4 +1,4 @@
-### Software Engineering Metric Visualisation Project
+# Software Engineering Metric Visualisation Project
 
 ## Project Explanation 
 
