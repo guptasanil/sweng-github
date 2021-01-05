@@ -17,29 +17,7 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Graph, FusionTheme);
 
-// STEP 2 - Chart Data
-const chartData = [
-  {
-    label: "Java",
-    value: "21"
-  },
-  {
-    label: "JavaScript",
-    value: "11"
-  },
-  {
-    label: "HTML",
-    value: "8"
-  },
-  {
-    label: "Python",
-    value: "5"
-  },
-  {
-    label: "Dart",
-    value: "2"
-  },
-];
+
 
 // STEP 3 - Creating the JSON object to store the chart configurations
 // const chartConfigs = {
@@ -58,6 +36,42 @@ const chartData = [
 // };
 
 const ChartComponent = (passedData) => {
+// Preparing the chart data
+const chartData = [
+  {
+    label: "Venezuela",
+    value: "290"
+  },
+  {
+    label: "Saudi",
+    value: "260"
+  },
+  {
+    label: "Canada",
+    value: "180"
+  },
+  {
+    label: "Iran",
+    value: "140"
+  },
+  {
+    label: "Russia",
+    value: "115"
+  },
+  {
+    label: "UAE",
+    value: "100"
+  },
+  {
+    label: "US",
+    value: "30"
+  },
+  {
+    label: "China",
+    value: "30"
+  }
+];
+
 
   
   const chartConfigs = {
@@ -75,38 +89,14 @@ const ChartComponent = (passedData) => {
         theme: "fusion"
       },
       // Chart Data
-      data: passedData
+      //data: passedData
+      data: chartData
     }
   };
     console.log(passedData)
     return (<ReactFC {...chartConfigs} />);
 }
 
-// var dataStore = new FusionCharts.DataStore().createDataTable(data, schema);
-// // time series chart instance
-// var realtimeChart = new FusionCharts({
-//   type: 'timeseries',
-//   renderAt: 'chart-container',
-//   width: '100%',
-//   height: '600',
-//   dataSource: {
-//     data: dataStore,
-//     yAxis: {
-//       plottype: 'area'
-//     },
-//     series: 'City'
-//   }
-// }).render();
-
-// document.getElementById('update-data').addEventListener('click', function() {
-//    var cityArr = ["New York", "London"];
-//    let index = data[randBetween(0, data.length)][0];
-//    let value = randBetween(20, 60);
-//    let city = cityArr[Math.floor(Math.random()*cityArr.length)];
-
-//    realtimeChart.feedData([
-//        [index, value, city]
-//        ]);
 
 
 
