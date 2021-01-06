@@ -19,6 +19,7 @@ and
 to run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+My project gives the user the ability to search up a GitHub User and receive general user information such as their number followers, following, and repos. They will also receive a list of all the users repo names. When a repo name is selected, a pie chart will be displayed revealing the languages used for the selcted repo.
 Here is a demo:
 
 ![](demo.gif)
